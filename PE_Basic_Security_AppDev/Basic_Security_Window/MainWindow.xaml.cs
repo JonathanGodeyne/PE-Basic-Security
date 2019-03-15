@@ -41,9 +41,6 @@ namespace Basic_Security_Window
         // private/public key value pair.
         const string keyName = "Key01";
 
-        OpenFileDialog openFileDialog1 = new OpenFileDialog();
-        OpenFileDialog openFileDialog2 = new OpenFileDialog();
-
         public MainWindow()
         {
             InitializeComponent();
@@ -69,7 +66,7 @@ namespace Basic_Security_Window
                 MessageBox.Show("Key not set.");
             else
             {
-
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
                 // Display a dialog box to select a file to encrypt.
                 openFileDialog1.InitialDirectory = SrcFolder;
                 if (openFileDialog1.ShowDialog() == true)
@@ -190,6 +187,8 @@ namespace Basic_Security_Window
                 MessageBox.Show("Key not set.");
             else
             {
+
+                OpenFileDialog openFileDialog2 = new OpenFileDialog();
                 // Display a dialog box to select the encrypted file.
                 openFileDialog2.InitialDirectory = EncrFolder;
                 if (openFileDialog2.ShowDialog() == true)
