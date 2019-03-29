@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hybrid_Crypt_IRC", "Hybrid_Crypt_IRC\Hybrid_Crypt_IRC.csproj", "{1B8D30D1-C962-4BC8-BDAF-D63CCFF928F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hybrid_Crypt_Basis_Console", "Hybrid_Crypt_Basis_Console\Hybrid_Crypt_Basis_Console.csproj", "{38593940-68AC-494F-8B2E-EB5B71E75CD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crypt_Lib", "Crypt_Lib\Crypt_Lib.csproj", "{D6C31017-E90A-447E-B166-5976AB50A72B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1B8D30D1-C962-4BC8-BDAF-D63CCFF928F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B8D30D1-C962-4BC8-BDAF-D63CCFF928F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B8D30D1-C962-4BC8-BDAF-D63CCFF928F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B8D30D1-C962-4BC8-BDAF-D63CCFF928F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38593940-68AC-494F-8B2E-EB5B71E75CD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38593940-68AC-494F-8B2E-EB5B71E75CD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38593940-68AC-494F-8B2E-EB5B71E75CD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38593940-68AC-494F-8B2E-EB5B71E75CD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6C31017-E90A-447E-B166-5976AB50A72B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6C31017-E90A-447E-B166-5976AB50A72B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6C31017-E90A-447E-B166-5976AB50A72B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6C31017-E90A-447E-B166-5976AB50A72B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
