@@ -1,7 +1,16 @@
+using System.Security.Cryptography;
+
 namespace Crypt_Lib
 {
-    public class HashUtil
+    public static class HashUtil
     {
-        
+        public static string calculateHash(byte[] file)
+        {
+            
+            using (SHA256Managed hasher = new SHA256Managed())
+            {
+                return hasher.ComputeHash(file).ToString();
+            }
+        }
     }
 }

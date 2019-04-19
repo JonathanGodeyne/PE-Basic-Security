@@ -24,10 +24,12 @@ namespace Crypt_Lib
                 Directory.CreateDirectory(keyStorageDirectory);
         }
 
-        public void WriteKeyToFile(string fileName, byte[] key)
+        
+
+        public void WriteBytesToFile(string fileName, byte[] key)
         {
             var filePath = Path.Combine(keyStorageDirectory, fileName);
-            if (checkForFileExistence(filePath))
+            if (!checkForFileExistence(filePath))
                 using (var writer = File.Create(filePath))
                 {
                     writer.Write(key);

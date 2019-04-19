@@ -4,14 +4,15 @@ using System.Security.Cryptography;
 
 namespace Crypt_Lib
 {
-    public class AesUtilities : IDisposable
+    public class AesUtil : IDisposable
     {
         private const int Aes256BitKeySize = 256;
         private AesManaged _aesManaged;
         private readonly FileUtil _fileUtil;
 
-        public AesUtilities(byte[] aesKey)
+        public AesUtil(byte[] aesKey)
         {
+            _aesManaged = new AesManaged();
             _fileUtil = new FileUtil();
             _aesManaged.GenerateIV();
             _aesManaged.KeySize = Aes256BitKeySize;
@@ -19,32 +20,36 @@ namespace Crypt_Lib
                 _aesManaged.Key = aesKey;
         }
 
+        public AesUtil()
+        {
+            _aesManaged = new AesManaged();
+            _fileUtil =  new FileUtil();
+            _aesManaged.GenerateIV();
+            _aesManaged.KeySize = Aes256BitKeySize;
+            _aesManaged.GenerateKey();
+        }
+
         public void Dispose()
         {
             _aesManaged.Dispose();
         }
 
-        private void WriteKeyToFile()
+        public void WriteKeyToFile()
         {
-            _fileUtil.WriteKeyToFile("Aes_key.aes", _aesManaged.Key);
+            _fileUtil.WriteBytesToFile("Aes_key.aes", _aesManaged.Key);
         }
 
-        public static byte[] Generate256BitKey()
+        public byte[] getKey()
         {
-            using (var aes = Aes.Create())
-            {
-                aes.KeySize = Aes256BitKeySize;
-                aes.GenerateKey();
-                return aes.Key;
-            }
+            return _aesManaged.Key;
         }
 
         
-        private byte[] EncryptStringToBytes_Aes(byte plainText)
+        public byte[] EncryptStringToBytes_Aes(string plainText)
         {
             // Check arguments.
-            if (plainText == null || plainText <= 0)
-                throw new ArgumentNullException("byte");
+            if (plainText == null || plainText.Equals(String.Empty))
+                throw new ArgumentNullException("empty string");
 
             byte[] encrypted;
 
@@ -78,8 +83,8 @@ namespace Crypt_Lib
             return encrypted;
         }
 
-        //todo vorm methode om zodat alleen de lokatie van de file moet gegeven worden
-        private string DecryptStringFromBytes_Aes(byte[] cipherText)
+        //TODO vorm methode om zodat alleen de lokatie van de file moet gegeven worden
+        public string DecryptStringFromBytes_Aes(byte[] cipherText)
         {
             // Check arguments.
             if (cipherText == null || cipherText.Length <= 0)
