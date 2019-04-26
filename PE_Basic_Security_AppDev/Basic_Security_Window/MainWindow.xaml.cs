@@ -20,6 +20,7 @@ namespace Basic_Security_Window
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
+    /// source: https://docs.microsoft.com/en-us/dotnet/standard/security/walkthrough-creating-a-cryptographic-application
     /// </summary>
     public partial class MainWindow : Window
     {
