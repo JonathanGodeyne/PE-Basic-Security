@@ -1,5 +1,5 @@
 using System.IO;
-
+using System.Text;
 namespace Crypt_Lib
 {
     public class FileUtil
@@ -11,30 +11,66 @@ namespace Crypt_Lib
         {
             currentDirectory = Directory.GetCurrentDirectory();
             keyStorageDirectory = Path.Combine(currentDirectory, "Key_Storage");
+            DirectorySetup();
+
         }
 
-        private bool checkForFileExistence(string pathName)
+        private bool checkFileExistence(string pathName)
         {
             return File.Exists(pathName);
         }
 
-        public void DirectorySetup()
+        private bool checkDirectoryExistence(string pathName)
         {
-            if (!Directory.Exists(keyStorageDirectory))
+            return Directory.Exists(pathName);
+        }
+
+        private void DirectorySetup()
+        {
+            if (!checkDirectoryExistence(keyStorageDirectory))
                 Directory.CreateDirectory(keyStorageDirectory);
         }
 
-        
 
-        public void WriteBytesToFile(string fileName, byte[] key)
+        public string getKeyFromPerson(string personName)
+        {
+            var personDirectoryPath = Path.Combine(keyStorageDirectory, "Keys"+personName);
+            var keyFilePath = Path.Combine(personDirectoryPath, personName+"_rsa");
+            UnicodeEncoding encoding = new UnicodeEncoding();
+            if(checkDirectoryExistence("Keys_"+personName))
+                return encoding.GetString(File.ReadAllBytes(keyFilePath));
+            else
+                throw new System.ArgumentException();
+                
+        }
+
+        public void WriteKeyToFile(string fileName, byte[] key, string personName)
+        {
+            var personDirectoryPath = Path.Combine(keyStorageDirectory, "Keys_"+personName);
+            var filePath = Path.Combine(personDirectoryPath, fileName);
+            if (!checkDirectoryExistence(personDirectoryPath))
+            {
+                Directory.CreateDirectory(personDirectoryPath);
+                if (!checkFileExistence(filePath))
+                    using (var writer = File.Create(filePath))
+                    {
+                        writer.Write(key);
+                    }
+
+            }
+        }
+
+        public void WriteBytesToFile(string fileName, byte[] data)
         {
             var filePath = Path.Combine(keyStorageDirectory, fileName);
-            if (!checkForFileExistence(filePath))
+            if (!checkFileExistence(filePath))
                 using (var writer = File.Create(filePath))
                 {
-                    writer.Write(key);
+                    writer.Write(data);
                 }
         }
+
+
 
         public string GetCurrentDirectory()
         {

@@ -34,11 +34,13 @@ namespace Crypt_Lib
             _aesManaged.Dispose();
         }
 
-        public void WriteKeyToFile()
+        public void setKey(byte[] key)
         {
-            _fileUtil.WriteBytesToFile("Aes_key.aes", _aesManaged.Key);
+            _aesManaged.Key = key;
+
         }
 
+        
         public byte[] getKey()
         {
             return _aesManaged.Key;

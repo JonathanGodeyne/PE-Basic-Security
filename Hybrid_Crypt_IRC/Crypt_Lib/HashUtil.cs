@@ -12,5 +12,10 @@ namespace Crypt_Lib
                 return hasher.ComputeHash(file).ToString();
             }
         }
+
+        public static SHA256Managed getHasher()
+        {
+            return new SHA256Managed();
+        }
     }
 }

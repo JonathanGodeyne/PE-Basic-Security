@@ -12,7 +12,7 @@ namespace Crypt_Lib
         private const int Rsa2048BitKeysize = 2048;
 
         
-
+        // configureer dependency injection voor FileUtil
         public RsaUtil()
         {
             
@@ -21,7 +21,7 @@ namespace Crypt_Lib
             
             
             _fileUtill = new FileUtil();
-            _fileUtill.DirectorySetup();
+            
         }
 
         public byte[] RsaSign(Byte[] dataToSign)
@@ -35,6 +35,22 @@ namespace Crypt_Lib
                 Console.WriteLine(e.Message);
                 throw;
             }
+        }
+
+        private void importKey(string personName)
+        {
+            try
+            {
+                var key = _fileUtill.getKeyFromPerson(personName);
+                rsa.FromXmlString(key);
+            }
+            catch (System.Exception)
+            {
+                
+                throw;
+            }
+            
+
         }
         
 
@@ -58,7 +74,13 @@ namespace Crypt_Lib
             }
         }
 
-        public byte[] RsaDecrypt(byte[] DataToDecrypt, RSAParameters RSAKeyInfo, bool DoOAEPPadding)
+        public bool RsaVerify(byte[] encryptedData, byte[] signature)
+        {
+            return rsa.VerifyData(encryptedData,new SHA256Managed(), signature);
+
+        }
+
+        public byte[] RsaDecrypt(byte[] DataToDecrypt, RSAParameters RSAKeyInfo)
         {
             try
             {
@@ -83,16 +105,17 @@ namespace Crypt_Lib
             rsa?.Dispose();
         }
 
-        public void writekeyToFile(string fileName)
+        public void writekeyToFile(string personName)
         {
+            personName = personName.ToLower();
             string privateKey = rsa.ToXmlStringExtension(true);
             string publicKey = rsa.ToXmlStringExtension(false);
             //save the private Key to private_filename
             UnicodeEncoding encoding = new UnicodeEncoding();
             
             
-            _fileUtill.WriteBytesToFile("PrivateKey_"+fileName, encoding.GetBytes(privateKey));
-            _fileUtill.WriteBytesToFile("PublicKey_"+fileName, encoding.GetBytes(privateKey));
+            _fileUtill.WriteKeyToFile(personName+"_rsa", encoding.GetBytes(privateKey), personName);
+            _fileUtill.WriteKeyToFile(personName+"_rsa.pub", encoding.GetBytes(publicKey), personName);
 
 
 
