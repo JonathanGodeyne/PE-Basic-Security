@@ -9,7 +9,11 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-
+using Hybrid_Crypt_IRC.Hubs;
+using Hybrid_Crypt_IRC.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 namespace Hybrid_Crypt_IRC
 {
     public class Startup
@@ -31,7 +35,22 @@ namespace Hybrid_Crypt_IRC
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme,
+                    options => 
+                    {
+                        options.LoginPath = new PathString("/Account/Login/");
+                        options.AccessDeniedPath = new PathString("/Account/Forbidden/");
+                    });
 
+            services.AddSignalR();
+            services.AddDbContext<ChatCryptContext>(options => options.UseSqlite(
+                Configuration.GetConnectionString("ChatCryptDBConection")));
+
+            services.AddDbContext<CryptChat_IdentityDbContext>(options => options.UseSqlite(
+                Configuration.GetConnectionString("ChatCryptDBConection")));
+            services.AddDefaultIdentity<IdentityUser>()
+                    .AddEntityFrameworkStores<CryptChat_IdentityDbContext>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -52,6 +71,9 @@ namespace Hybrid_Crypt_IRC
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            
+
+            app.UseSignalR(routes => routes.MapHub<CryptHub>("/cryptChat"));
 
             app.UseMvc(routes =>
             {
