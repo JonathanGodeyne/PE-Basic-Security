@@ -1,0 +1,20 @@
+Beide tools zijn vulnerability scanners
+
+Het grootste verschil tussen beide tools is dat OpenVAS opensource is en Nessus is dat niet.
+Om Nessus te mogen gebruiken moet je een licentie aankopen, de prijs voor een licentie van 1 jaar kost 2500 euro. 
+
+Het eerste wat opvalt is de presentatie van het document, het rapport van Nessus is wordt veel mooier gepresenteerd dan die van Openvas. 
+
+Beiden rapporten verdelen hun resultaten in 5 catergorieën. Hierin verschillen ze ook van elkaar want Nessus heeft een categorie Critical die Openvas niet heeft maar Openvas heeft wel een categorie False Positives die Nessus dan weer niet heeft. Ook in het aantal gevonden vulnerabilities verschillen, zo heeft Openvas 20 High, 36 Medium, 3 Low kwetsbaarheden gevonden en 90 resulaten in logs.
+
+Het rapport van Nessus is veel overzichtelijker dan dat van OpenVAS en dus makkelijker om te vergelijken met vorige scans.
+
+Binnen Nessus en OpenVAS zelf kan je heel makkelijk je eigen scans maken en tweaken. Een scanconfiguratie die je maakt kan je opslaan om later dan nog eens dezelfde scan uit te voeren met dezelfde configuratie als toen je die scan had gerund. 
+Via de settings van de scan kan je ook aanpassen op wat je wil scannen (poorten, ...)  
+
+Het dashboard in OpenVAS is veel overzichtelijker dan dat van Nessus.
+
+Bij de scan van metasploitable is ons ook opgevallen dat Nessus veel minder vulnerabilities vindt dan OpenVAS terwijl de scanconfiguratie
+wel hetzelfde is. Dit terwijl Nessus 2500 euro per jaar kost en OpenVAS opensource is. Het enige van voordeel van Nessus t.o.v. OpenVAS
+in onze ervaring zijn de scan rapports.
+

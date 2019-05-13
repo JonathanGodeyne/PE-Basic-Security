@@ -1,0 +1,26 @@
+Armitage is de GUI(Graphical User Interface) van metasploit framework.
+Metasploit framework is een tool(software app) om 'exploit' code te schrijven en uit te voeren op target systemen.
+
+Na het invullen van het ip van het target systeem komt er een icoon van een computer tevoorschijn met het win xp logo.
+
+Armitage kan met 'find attacks' exploits zoeken die toegepast kunnen worden op het target systeem
+[1_attack_analysis]
+
+Van de al de exploits die Armitage toonde heeft alleen ms08_067_netapi gewerkt.
+Het enige wat we moeten doen om de exploit te laten werken is het ip adres en poort van de target systeem en het ip en poort van kali invullen.
+[2_exploit_netapi]
+[2-2_exploit_netapi]
+
+Na het uitvoeren van de aanval verandert het icoon van de computer van kleur en is er een extra optie bijgomen wanneer er met de rechtermuisknop geklikt wordt op de windows icoon. 
+
+[3_compromised]
+
+"We" hebben nu volledige controle over het target systeem. Zo kunnen we een commandprompt openen, de webcam starten, screenshots maken, een keylogger starten, ... 
+
+[3_credentials]
+[4_screenshot]
+
+Er is ook een mogelijkheid om ipv een specifieke aanval uit te voeren gebruik te maken van 'hail mary', dit is een optie dat zelf de exploits selecteert die het meeste kans hebben om het systeem te "compromitteren"(to compromise) en deze automatisch uitvoert met de juiste instellingen. Dit is niet aangeraden omdat deze optie veel exploits uitprobeert waardoor de aanval op de target makkelijk detecteer is en mogelijk de target zou kunnen crashen.
+
+[5_hail_mary]
+[5-2_hail_mary]

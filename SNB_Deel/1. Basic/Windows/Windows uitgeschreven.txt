@@ -1,0 +1,37 @@
+Alle openvas scans zijn gebeurd met de volgende instellingen:
+local systeem: kali linux
+target systeem: windows xp sp3
+portlist: openVAS default
+scan config: full&fast
+
+Een scan met openvas waarbij de firewall aan staat toont 1 enkele log waar er geprobeerd wordt om de OS (operating system) te detecteren maar waarbij het faalt.
+
+[1_scan_firewall]
+[1.1_log_OS]
+
+Een scan waarbij de firewall uit staat toont 4 high severity vulnerabilities en 12 logs.
+De logs geven vooral weer welke services er op welke poorten draaien, ze zijn enkel informatief.
+
+[2_scan_before_update]
+
+Van de 4 high severity vulnerabilities is de eerste OS End Of Life Detection wat wil zeggen dat de OS dat het target systeem gebruikt niet meer ondersteund wordt (XP wordt sinds april 2014 niet meer ondersteund door Microsoft).
+De 3 andere vulnerabilities zijn met betrekking tot de SMB service dat draait op poort 445.
+
+[2.2_vulns]
+
+SMB staat voor Server Message Block, dit protocol maakt gebruik van TCP en wordt vooral gebruikt om bestanden uit te wisselen tussen verschillende computers maar je kan er ook toegang mee krijgen tot bv een printer die op een andere computer is aangesloten. 
+
+Bij de huidige SMB service kan gebruiker met slechte bedoelingen m.b.v. een aangepast SMB pakje een *buffer overflow* en een *denial of service* aanval uitvoeren of de authenticatie mechanisme 'bypassen' door middel van *brute forcing*.
+
+De oplossing hiervoor is om de service te updaten met Windows Update.
+
+Na het updaten van de SMB service is deze niet meer kwetsbaar.
+
+[3_scan_after_update]
+
+---
+Een buffer overflow is kwetsbaarheid waarbij een gebruiker meer input geeft dan is voorzien in de buffer van een programma. Hierdoor kan het return adres van het programma overschreven worden en zo kan een aanvaller het programma laten 'returnen' naar een ander adres, bv een adres waar deze gebruiker een virus heeft staan of een andere payload. Of er kan geheugen worden aangeroepen wat niet bestaat of waarvan de service de rechten niet heeft om het te lezen. Dit wordt memory corruption genoemd.
+---
+Een denial of service ook wel system hang genoemd is een aanval waarbij een systeem tijdelijk onbruikbaar wordt gemaakt door deze bv te crashen.  (of heel veel informatie naar toe te sturen waardoor deze niet meer reageert -> slow loris)
+---
+Bruteforcing wil eigenlijk zeggen heel veel verschillende combinaties van gebruikersnamen en paswoorden uitproberen totdat je de juiste vindt. Er zijn veel verschillende tools hiervoor beschikbaar bv John the Ripper of Hydra. Bij bruteforcing wordt gebruik gemaakt van heel grote dictionaries, dit zijn tekstbestanden met meest voorkomende gebruikersnamen en paswoorden.
