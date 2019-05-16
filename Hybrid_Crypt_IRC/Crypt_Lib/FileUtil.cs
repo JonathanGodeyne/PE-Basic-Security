@@ -34,14 +34,12 @@ namespace Crypt_Lib
 
         public string getKeyFromPerson(string personName)
         {
-           var personDirectoryPath = Path.Combine(keyStorageDirectory, "Keys_"+personName);
+            var personDirectoryPath = Path.Combine(keyStorageDirectory, "Keys_"+personName);
             var keyFilePath = Path.Combine(personDirectoryPath, personName+"_rsa");
+
             UnicodeEncoding encoding = new UnicodeEncoding();
-            if (checkDirectoryExistence(Path.Combine(keyStorageDirectory, "Keys_" + personName)))
-            {
-                return encoding.GetString(File.ReadAllBytes(keyFilePath));
-            }
-            throw new System.ArgumentException();
+            return encoding.GetString(File.ReadAllBytes(keyFilePath));
+           
 
         }
 
