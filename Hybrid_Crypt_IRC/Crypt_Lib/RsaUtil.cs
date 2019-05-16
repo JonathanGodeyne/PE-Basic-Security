@@ -116,9 +116,6 @@ namespace Crypt_Lib
             
             _fileUtill.WriteKeyToFile(personName+"_rsa", encoding.GetBytes(privateKey), personName);
             _fileUtill.WriteKeyToFile(personName+"_rsa.pub", encoding.GetBytes(publicKey), personName);
-
-
-
         }
     }
 }

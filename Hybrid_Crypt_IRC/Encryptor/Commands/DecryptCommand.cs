@@ -1,4 +1,3 @@
-
 using Crypt_Lib;
 using McMaster.Extensions.CommandLineUtils;
 using System.IO;
@@ -35,10 +34,7 @@ public class DecryptCommand : ICommand
                 (new DecryptCommand(messageOption.Value(), senderOption.Value())).Run();
             else
 
-                return 0;
-
-
-
+            return 0;
         });
     }
 
@@ -63,11 +59,9 @@ public class DecryptCommand : ICommand
     public void Run()
     {
         Decrypt(_receiverName, _senderName, _messagePath, _keyPath, _hashPath);
-
-
     }
 
-    private void Decrypt(string receiverName, string senderName,string messagePath, string keyPath, string hashPath)
+    private string Decrypt(string receiverName, string senderName,string messagePath, string keyPath, string hashPath)
     {
 
         FileUtil fileUtil = new FileUtil();
@@ -76,9 +70,11 @@ public class DecryptCommand : ICommand
             using (RsaUtil rsaA = new RsaUtil(),
                           rsaB = new RsaUtil())
             {
-                rsaB.importKey();
+                return aesUtil.DecryptStringFromBytes_Aes(messagePath);
             }
         }
+        
+
 
     }
 }
