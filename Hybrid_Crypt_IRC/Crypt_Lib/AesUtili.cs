@@ -1,3 +1,4 @@
+using System.Text;
 using System;
 using System.IO;
 using System.Security.Cryptography;
@@ -118,7 +119,7 @@ namespace Crypt_Lib
                 {
                     using (var csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
                     {
-                        using (var srDecrypt = new StreamReader(csDecrypt))
+                        using (var srDecrypt = new StreamReader(csDecrypt, new UnicodeEncoding()))
                         {
                             // Read the decrypted bytes from the decrypting stream
                             // and place them in a string.

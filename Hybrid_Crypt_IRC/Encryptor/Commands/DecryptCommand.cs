@@ -1,6 +1,11 @@
+using System.Text;
 using Crypt_Lib;
 using McMaster.Extensions.CommandLineUtils;
 using System.IO;
+using System;
+
+
+
 public class DecryptCommand : ICommand
 {
     public static void Configure(CommandLineApplication command)
@@ -20,7 +25,7 @@ public class DecryptCommand : ICommand
         var keyOption = command.Option("-k|--key <key>",
                                 "Path of the encrypted message",
                                 CommandOptionType.SingleValue);
-        var hashOption = command.Option("-h|--hash <hash>",
+        var hashOption = command.Option("--hash <hash>",
                                 "Path of the encrypted message",
                                 CommandOptionType.SingleValue);
 
@@ -30,11 +35,7 @@ public class DecryptCommand : ICommand
 
         command.OnExecute(() =>
         {
-            if (senderOption.HasValue() && messageOption.HasValue())
-                (new DecryptCommand(messageOption.Value(), senderOption.Value())).Run();
-            else
-
-            return 0;
+            (new DecryptCommand(receiverArgument.Value, senderOption.Value(), messageOption.Value(),keyOption.Value(),hashOption.Value() ) ).Run();
         });
     }
 
@@ -44,7 +45,7 @@ public class DecryptCommand : ICommand
     private readonly string _messagePath;
     private readonly string _senderName;
 
-    private readonly RsaUtil _RsaUtil;
+
 
 
 
@@ -61,7 +62,7 @@ public class DecryptCommand : ICommand
         Decrypt(_receiverName, _senderName, _messagePath, _keyPath, _hashPath);
     }
 
-    private string Decrypt(string receiverName, string senderName,string messagePath, string keyPath, string hashPath)
+    private void Decrypt(string receiverName, string senderName,string messagePath, string keyPath, string hashPath)
     {
 
         FileUtil fileUtil = new FileUtil();
@@ -70,7 +71,20 @@ public class DecryptCommand : ICommand
             using (RsaUtil rsaA = new RsaUtil(),
                           rsaB = new RsaUtil())
             {
-                return aesUtil.DecryptStringFromBytes_Aes(messagePath);
+                
+                rsaA.importKey(senderName);
+                rsaB.importKey(receiverName);
+                UnicodeEncoding encoding = new UnicodeEncoding();
+                
+
+                var decryptedSymKey= rsaB.RsaDecrypt(File.ReadAllBytes(keyPath));
+                aesUtil.setKey(decryptedSymKey);
+                var decryptedMessage = aesUtil.DecryptStringFromBytes_Aes(messagePath);
+                Console.WriteLine("Het originele bericht was");
+                Console.WriteLine(decryptedMessage);
+
+                var sign = rsaA.RsaVerify(encoding.GetBytes(decryptedMessage), File.ReadAllBytes(hashPath));
+                Console.WriteLine("Zijn de hashes hetzelfde?: " + sign);
             }
         }
         

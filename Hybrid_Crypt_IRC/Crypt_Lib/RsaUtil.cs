@@ -37,7 +37,7 @@ namespace Crypt_Lib
             }
         }
 
-        private void importKey(string personName)
+        public void importKey(string personName)
         {
             try
             {
@@ -80,7 +80,7 @@ namespace Crypt_Lib
 
         }
 
-        public byte[] RsaDecrypt(byte[] DataToDecrypt, RSAParameters RSAKeyInfo)
+        public byte[] RsaDecrypt(byte[] DataToDecrypt)
         {
             try
             {

@@ -34,7 +34,7 @@ namespace Crypt_Lib
 
         public string getKeyFromPerson(string personName)
         {
-            var personDirectoryPath = Path.Combine(keyStorageDirectory, "Keys"+personName);
+           var personDirectoryPath = Path.Combine(keyStorageDirectory, "Keys"+personName);
             var keyFilePath = Path.Combine(personDirectoryPath, personName+"_rsa");
             UnicodeEncoding encoding = new UnicodeEncoding();
             if(checkDirectoryExistence("Keys_"+personName))
@@ -69,6 +69,8 @@ namespace Crypt_Lib
                     writer.Write(data);
                 }
         }
+
+        //public string GetByteFromFile(string )
 
 
 
