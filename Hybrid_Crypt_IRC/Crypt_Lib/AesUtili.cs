@@ -86,8 +86,14 @@ namespace Crypt_Lib
         }
 
         //TODO vorm methode om zodat alleen de lokatie van de file moet gegeven worden
-        public string DecryptStringFromBytes_Aes(byte[] cipherText)
+        public string DecryptStringFromBytes_Aes(string fileLocation)
         {
+            if (!File.Exists(fileLocation))
+            {
+                throw new FileNotFoundException("The location submitted does not contain a valid file");
+            }
+            byte[] cipherText = File.ReadAllBytes(fileLocation);
+            
             // Check arguments.
             if (cipherText == null || cipherText.Length <= 0)
                 throw new ArgumentNullException("cipherText");
