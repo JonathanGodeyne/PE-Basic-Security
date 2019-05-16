@@ -55,7 +55,7 @@ public class EncryptCommand : ICommand
             {
                 rsaA.writekeyToFile(_senderName);
                 rsaB.writekeyToFile(_receiverName);
-                Console.WriteLine("Geef de tekst die geencryteerd moet worden: ");
+                Console.WriteLine("Geef de tekst die geëncrypteerd moet worden: ");
                 Console.Write("--> ");
 
                 input = Console.ReadLine();

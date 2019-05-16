@@ -77,13 +77,13 @@ public class DecryptCommand : ICommand
                 UnicodeEncoding encoding = new UnicodeEncoding();
                 
 
-                var decryptedSymKey= rsaB.RsaDecrypt(File.ReadAllBytes(keyPath));
+                var decryptedSymKey= rsaB.RsaDecrypt(File.ReadAllBytes(Path.Combine(fileUtil.GetCurrentDirectory(),keyPath)));
                 aesUtil.setKey(decryptedSymKey);
-                var decryptedMessage = aesUtil.DecryptStringFromBytes_Aes(messagePath);
+                var decryptedMessage = aesUtil.DecryptStringFromBytes_Aes(Path.Combine(fileUtil.GetCurrentDirectory(), messagePath));
                 Console.WriteLine("Het originele bericht was");
                 Console.WriteLine(decryptedMessage);
 
-                var sign = rsaA.RsaVerify(encoding.GetBytes(decryptedMessage), File.ReadAllBytes(hashPath));
+                var sign = rsaA.RsaVerify(encoding.GetBytes(decryptedMessage), File.ReadAllBytes(Path.Combine(fileUtil.GetCurrentDirectory(), hashPath)));
                 Console.WriteLine("Zijn de hashes hetzelfde?: " + sign);
             }
         }
