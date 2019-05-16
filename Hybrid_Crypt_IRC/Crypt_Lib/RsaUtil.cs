@@ -120,5 +120,14 @@ namespace Crypt_Lib
 
 
         }
+
+        public string getPublicKeyString(){
+            return rsa.ToXmlStringExtension(false);
+
+        }
+
+        public string getPrivatekeyString(){
+            return rsa.ToXmlStringExtension(true);
+        }
     }
 }

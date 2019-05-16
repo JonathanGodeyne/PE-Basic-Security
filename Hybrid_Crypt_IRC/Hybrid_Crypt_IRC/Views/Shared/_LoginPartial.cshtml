@@ -1,6 +1,7 @@
 @using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@using Hybrid_Crypt_IRC.Data
+@inject SignInManager<ChatCryptUser> SignInManager
+@inject UserManager<ChatCryptUser> UserManager
 
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))

@@ -14,6 +14,12 @@ namespace Hybrid_Crypt_IRC.Controllers
         {
             return View();
         }
+        
+
+        public IActionResult Chat()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {
@@ -24,6 +30,12 @@ namespace Hybrid_Crypt_IRC.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
+        }
+
+        public IActionResult Keys()
+        {
+            return View();
+
         }
     }
 }

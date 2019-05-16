@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Hybrid_Crypt_IRC.Data
 {
-    public class CryptChat_IdentityDbContext : IdentityDbContext<IdentityUser>
+    public class CryptChat_IdentityDbContext : IdentityDbContext<ChatCryptUser>
     {
         public CryptChat_IdentityDbContext(DbContextOptions<CryptChat_IdentityDbContext> options)
             : base(options)

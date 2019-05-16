@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Hybrid_Crypt_Basis_Console/Hybrid_Crypt_Basis_Console.csproj"
+                "${workspaceFolder}/Hybrid_Crypt_IRC/Hybrid_Crypt_IRC.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -17,7 +17,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/Hybrid_Crypt_Basis_Console/Hybrid_Crypt_Basis_Console.csproj"
+                "${workspaceFolder}/Hybrid_Crypt_IRC/Hybrid_Crypt_IRC.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -28,7 +28,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/Hybrid_Crypt_Basis_Console/Hybrid_Crypt_Basis_Console.csproj"
+                "${workspaceFolder}/Hybrid_Crypt_IRC/Hybrid_Crypt_IRC.csproj"
             ],
             "problemMatcher": "$tsc"
         }

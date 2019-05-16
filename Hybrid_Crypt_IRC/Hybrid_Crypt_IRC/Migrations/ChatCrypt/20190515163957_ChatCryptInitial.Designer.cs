@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hybrid_Crypt_IRC.Migrations.ChatCrypt
 {
     [DbContext(typeof(ChatCryptContext))]
-    [Migration("20190513151451_ChatCryptDbInitial")]
-    partial class ChatCryptDbInitial
+    [Migration("20190515163957_ChatCryptInitial")]
+    partial class ChatCryptInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -52,20 +52,24 @@ namespace Hybrid_Crypt_IRC.Migrations.ChatCrypt
                     b.ToTable("Messages");
                 });
 
-            modelBuilder.Entity("Hybrid_Crypt_IRC.Models.PublicKeys", b =>
+            modelBuilder.Entity("Hybrid_Crypt_IRC.Models.UserInfo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int?>("ChatGroupId");
 
+                    b.Property<string>("ConnectionId");
+
                     b.Property<string>("PublicKey");
+
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ChatGroupId");
 
-                    b.ToTable("PublicKeys");
+                    b.ToTable("UserInfo");
                 });
 
             modelBuilder.Entity("Hybrid_Crypt_IRC.Models.Message", b =>
@@ -75,10 +79,10 @@ namespace Hybrid_Crypt_IRC.Migrations.ChatCrypt
                         .HasForeignKey("ChatGroupId");
                 });
 
-            modelBuilder.Entity("Hybrid_Crypt_IRC.Models.PublicKeys", b =>
+            modelBuilder.Entity("Hybrid_Crypt_IRC.Models.UserInfo", b =>
                 {
                     b.HasOne("Hybrid_Crypt_IRC.Models.ChatGroup")
-                        .WithMany("PublicKeys")
+                        .WithMany("UserInfo")
                         .HasForeignKey("ChatGroupId");
                 });
 #pragma warning restore 612, 618

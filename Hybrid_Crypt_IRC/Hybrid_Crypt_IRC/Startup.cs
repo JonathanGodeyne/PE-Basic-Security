@@ -14,6 +14,14 @@ using Hybrid_Crypt_IRC.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
+
+/*todo 
+maak een input voor gebruikers
+als een gebruiker is gevonden word kan je chatten
+
+*/
+
+
 namespace Hybrid_Crypt_IRC
 {
     public class Startup
@@ -37,7 +45,7 @@ namespace Hybrid_Crypt_IRC
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme,
-                    options => 
+                    options =>
                     {
                         options.LoginPath = new PathString("/Account/Login/");
                         options.AccessDeniedPath = new PathString("/Account/Forbidden/");
@@ -49,9 +57,11 @@ namespace Hybrid_Crypt_IRC
 
             services.AddDbContext<CryptChat_IdentityDbContext>(options => options.UseSqlite(
                 Configuration.GetConnectionString("ChatCryptDBConection")));
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddDefaultIdentity<ChatCryptUser>()
                     .AddEntityFrameworkStores<CryptChat_IdentityDbContext>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,7 +81,9 @@ namespace Hybrid_Crypt_IRC
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-            
+            app.UseAuthentication();
+            app.UseSession();
+
 
             app.UseSignalR(routes => routes.MapHub<CryptHub>("/cryptChat"));
 

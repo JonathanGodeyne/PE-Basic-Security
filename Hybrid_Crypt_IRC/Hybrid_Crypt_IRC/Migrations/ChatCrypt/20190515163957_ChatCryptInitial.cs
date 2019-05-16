@@ -2,7 +2,7 @@
 
 namespace Hybrid_Crypt_IRC.Migrations.ChatCrypt
 {
-    public partial class ChatCryptDbInitial : Migration
+    public partial class ChatCryptInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -43,19 +43,21 @@ namespace Hybrid_Crypt_IRC.Migrations.ChatCrypt
                 });
 
             migrationBuilder.CreateTable(
-                name: "PublicKeys",
+                name: "UserInfo",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    UserId = table.Column<string>(nullable: true),
                     PublicKey = table.Column<string>(nullable: true),
+                    ConnectionId = table.Column<string>(nullable: true),
                     ChatGroupId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PublicKeys", x => x.Id);
+                    table.PrimaryKey("PK_UserInfo", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PublicKeys_GroupChat_ChatGroupId",
+                        name: "FK_UserInfo_GroupChat_ChatGroupId",
                         column: x => x.ChatGroupId,
                         principalTable: "GroupChat",
                         principalColumn: "Id",
@@ -68,8 +70,8 @@ namespace Hybrid_Crypt_IRC.Migrations.ChatCrypt
                 column: "ChatGroupId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PublicKeys_ChatGroupId",
-                table: "PublicKeys",
+                name: "IX_UserInfo_ChatGroupId",
+                table: "UserInfo",
                 column: "ChatGroupId");
         }
 
@@ -79,7 +81,7 @@ namespace Hybrid_Crypt_IRC.Migrations.ChatCrypt
                 name: "Messages");
 
             migrationBuilder.DropTable(
-                name: "PublicKeys");
+                name: "UserInfo");
 
             migrationBuilder.DropTable(
                 name: "GroupChat");

@@ -12,5 +12,7 @@ namespace Hybrid_Crypt_IRC.Data
 
         public DbSet<Message> Messages { get; set; }
         public DbSet<ChatGroup> GroupChat { get; set; }
+        public DbSet<UserInfo> UserInfo { get; set; }
+
     }
 }

@@ -9,7 +9,7 @@ namespace Hybrid_Crypt_IRC.Models
 
         public string Password { get; set; }
         public string Salt { get; set; }
-        public ICollection<PublicKeys> PublicKeys { get; set; }
+        public ICollection<UserInfo> UserInfo { get; set; }
         public ICollection<Message> Messages { get; set; }
 
     }
