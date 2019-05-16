@@ -1,0 +1,15 @@
+C:\Users\11307408\Desktop\Basic Security\PE_AppDev\PE_Basic_Security_AppDev\Basic_Security_Window\bin\Debug\Basic_Security_Window.exe.config
+C:\Users\11307408\Desktop\Basic Security\PE_AppDev\PE_Basic_Security_AppDev\Basic_Security_Window\bin\Debug\Basic_Security_Window.exe
+C:\Users\11307408\Desktop\Basic Security\PE_AppDev\PE_Basic_Security_AppDev\Basic_Security_Window\bin\Debug\Basic_Security_Window.pdb
+C:\Users\11307408\Desktop\Basic Security\PE_AppDev\PE_Basic_Security_AppDev\Basic_Security_Window\obj\Debug\Basic_Security_Window.csprojAssemblyReference.cache
+C:\Users\11307408\Desktop\Basic Security\PE_AppDev\PE_Basic_Security_AppDev\Basic_Security_Window\obj\Debug\MainWindow.g.cs
+C:\Users\11307408\Desktop\Basic Security\PE_AppDev\PE_Basic_Security_AppDev\Basic_Security_Window\obj\Debug\App.g.cs
+C:\Users\11307408\Desktop\Basic Security\PE_AppDev\PE_Basic_Security_AppDev\Basic_Security_Window\obj\Debug\Basic_Security_Window_MarkupCompile.cache
+C:\Users\11307408\Desktop\Basic Security\PE_AppDev\PE_Basic_Security_AppDev\Basic_Security_Window\obj\Debug\Basic_Security_Window_MarkupCompile.lref
+C:\Users\11307408\Desktop\Basic Security\PE_AppDev\PE_Basic_Security_AppDev\Basic_Security_Window\obj\Debug\MainWindow.baml
+C:\Users\11307408\Desktop\Basic Security\PE_AppDev\PE_Basic_Security_AppDev\Basic_Security_Window\obj\Debug\Basic_Security_Window.g.resources
+C:\Users\11307408\Desktop\Basic Security\PE_AppDev\PE_Basic_Security_AppDev\Basic_Security_Window\obj\Debug\Basic_Security_Window.Properties.Resources.resources
+C:\Users\11307408\Desktop\Basic Security\PE_AppDev\PE_Basic_Security_AppDev\Basic_Security_Window\obj\Debug\Basic_Security_Window.csproj.GenerateResource.cache
+C:\Users\11307408\Desktop\Basic Security\PE_AppDev\PE_Basic_Security_AppDev\Basic_Security_Window\obj\Debug\Basic_Security_Window.csproj.CoreCompileInputs.cache
+C:\Users\11307408\Desktop\Basic Security\PE_AppDev\PE_Basic_Security_AppDev\Basic_Security_Window\obj\Debug\Basic_Security_Window.exe
+C:\Users\11307408\Desktop\Basic Security\PE_AppDev\PE_Basic_Security_AppDev\Basic_Security_Window\obj\Debug\Basic_Security_Window.pdb

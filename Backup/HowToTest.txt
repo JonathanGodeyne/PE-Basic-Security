@@ -1,0 +1,26 @@
+To create keys, encrypt, and decrypt
+	Click the "Create Keys" button. The label displays the key name and shows that it is a full key pair.
+
+	Click the "Export Public Key" button. Note that exporting the public key parameters does not change the current key.
+
+	Click the "Encrypt File" button and select a file.
+
+	Click the "Decrypt File" button and select the file just encrypted.
+
+Examine the file just decrypted.
+
+	Close the application and restart it to test retrieving persisted key containers in the next scenario.
+
+To encrypt using the public key
+	Click the "Import Public Key" button. The label displays the key name and shows that it is public only.
+
+	Click the "Encrypt File" button and select a file.
+
+	Click the "Decrypt File" button and select the file just encrypted. This will fail because you must have the private key to decrypt.
+
+This scenario demonstrates having only the public key to encrypt a file for another person. Typically that person would give you only the public key and withhold the private key for decryption.
+
+To decrypt using the private key
+	Click the "Get Private Key" button. The label displays the key name and shows whether it is the full key pair.
+
+	Click the "Decrypt File" button and select the file just encrypted. This will be successful because you have the full key pair to decrypt.
