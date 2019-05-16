@@ -1,10 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hybrid_Crypt_IRC", "Hybrid_Crypt_IRC\Hybrid_Crypt_IRC.csproj", "{1B8D30D1-C962-4BC8-BDAF-D63CCFF928F0}"
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hybrid_Crypt_IRC", "Hybrid_Crypt_IRC\Hybrid_Crypt_IRC.csproj", "{1B8D30D1-C962-4BC8-BDAF-D63CCFF928F0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hybrid_Crypt_Basis_Console", "Hybrid_Crypt_Basis_Console\Hybrid_Crypt_Basis_Console.csproj", "{38593940-68AC-494F-8B2E-EB5B71E75CD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crypt_Lib", "Crypt_Lib\Crypt_Lib.csproj", "{D6C31017-E90A-447E-B166-5976AB50A72B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crypt_Lib", "Crypt_Lib\Crypt_Lib.csproj", "{D6C31017-E90A-447E-B166-5976AB50A72B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Encryptor", "Encryptor\Encryptor.csproj", "{E7284E9B-7B49-4931-9AAB-DD2652AA0084}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +29,15 @@ Global
 		{D6C31017-E90A-447E-B166-5976AB50A72B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6C31017-E90A-447E-B166-5976AB50A72B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6C31017-E90A-447E-B166-5976AB50A72B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7284E9B-7B49-4931-9AAB-DD2652AA0084}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7284E9B-7B49-4931-9AAB-DD2652AA0084}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7284E9B-7B49-4931-9AAB-DD2652AA0084}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7284E9B-7B49-4931-9AAB-DD2652AA0084}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {348D5383-AA06-465E-881C-E95C366331AE}
 	EndGlobalSection
 EndGlobal
