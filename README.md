@@ -2,12 +2,12 @@
 PE Basic Security PXL 2018-2019 
 
 ## AON gedeelte gemaakt door
-Jonathan Godeyne
-Bert Hoogsteyns
+* Jonathan Godeyne
+* Bert Hoogsteyns
 
 ## SNB gedeelte door
-Glenn Vandervelpen
-Turpal Gadamauri
+* Glenn Vandervelpen
+* Turpal Gadamauri
 
 Webpagina met al de documentatie die gebruikt is voor het maken van de console en frontend applicatie
 
