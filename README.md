@@ -1,11 +1,11 @@
 # PE-Basic-Security
 PE Basic Security PXL 2018-2019 
 
-##AON gedeelte gemaakt door
+## AON gedeelte gemaakt door
 Jonathan Godeyne
 Bert Hoogsteyns
 
-##SNB gedeelte door
+## SNB gedeelte door
 Glenn Vandervelpen
 Turpal Gadamauri
 
